@@ -1,0 +1,85 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+    {
+      "email": "cannondell_f3@icloud.com",
+      "password": "$2a$10$7GT./pBKKwGGXTqKCidMcek9bD55PCmaQL81rXf1dfDWtR8Z2Zi4a",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 1
+    },
+    {
+      "email": "paronharut@mail.ru",
+      "password": "$2a$10$hPvgOiUqVvQE7zOGyBjYruHsIveamxAABIWe8aNFsqYhjUKf2ur3K",
+      "name": "Harut",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 2
+    },
+    {
+      "email": "cannondell_f3@yahoo.com",
+      "password": "$2a$10$PAh055/p5DrkNnxaeDBvou3Ph6EA6l.mD3vv5A7m7wJDuRpyxIJpi",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 3
+    },
+    {
+      "email": "exo@mail.ru",
+      "password": "$2a$10$.rgcNg2NA3apptVuxJdMWOkPtdkofNWHAJskKII6smxXLGS1p/EbW",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 4
+    },
+    {
+      "email": "rehaz1383@gmail.com",
+      "password": "$2a$10$Jss895c/LS7Blf4BnZA6.umDSphbkYvIYPQN1yZFtCfOMKSr7KDKu",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 5
+    },
+    {
+      "email": "arpine.aghjoyan@digitain.com",
+      "password": "$2a$10$21elgN.WfarXu/NHdfEcXuDJPLyIufbjtIuHnA2tfTN9PnuD9tq3.",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 6
+    },
+    {
+      "email": "argam1@mail.ru",
+      "password": "$2a$10$v.VyK1/8n4ccyfoUdG/Z2OVM1ZmhyUteIG2Nt/kQ9XPvx99oKpIgm",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 7
+    },
+    {
+      "email": "argam2@mail.ru",
+      "password": "$2a$10$ypwm9NTuR1yhNb5wKbrVvOctNRJBTQZKWqXrPv.Os6EmDTKxi3R5q",
+      "name": "Argam",
+      "confirmPassword": "asdasdasd",
+      "status": true,
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

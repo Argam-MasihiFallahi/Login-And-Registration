@@ -1,0 +1,26 @@
+
+.togglerContainer {
+    width: 80px;
+    height: 30px;
+    background-color: gray;
+    border-radius: 50px;
+    position: relative;
+    margin: 5px;
+}
+.active {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: green;
+    position: absolute;
+    right: 0;
+
+}
+.inActive {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    left: 0;
+}
