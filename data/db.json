@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "email": "paronharut@mail.ru",
+      "password": "123",
+      "name": "ago",
+      "status": "active",
+      "id": 1
+    },
+    {
+      "name": "ago",
+      "email": "cannondell_f3@icloud.com",
+      "password": "123",
+      "status": "active",
+      "id": 2
+    },
+    {
+      "name": "Argam",
+      "email": "cannondell_f3@yahoo.com",
+      "password": "123123",
+      "status": "active",
+      "id": 3
+    },
+    {
+      "email": "exo@mail.ru",
+      "password": "123000",
+      "id": 4
+    },
+    {
+      "email": "paronharut@mail.ru",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "email": "paronharut@mail.ru",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "email": "paronharut@mail.ru",
+      "password": "123",
+      "id": 7
+    },
+    {
+      "name": "ago",
+      "email": "cannondell_f3@icloud.com",
+      "password": "asd",
+      "status": "active",
+      "id": 8
+    }
+  ]
+}

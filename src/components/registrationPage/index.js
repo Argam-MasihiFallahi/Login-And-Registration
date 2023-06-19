@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
 import axios from "axios";
 
-
 function RegistrationPage() {
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,53 +12,41 @@ function RegistrationPage() {
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
-    function handleSubmit(e) {
+    const handleSubmit = useCallback((e) => {
         e.preventDefault();
         // password && password === confirmPass && email && name
         if (password !== confirmPassword) {
             setError("somthing went wrong check your passwords");
-        } 
-        if(!password || !name || !confirmPassword || !email) {
+        }
+        if (!password || !name || !confirmPassword || !email) {
             setError("please fill all inputs");
         }
-
 
         if (password && password === confirmPassword && email && name) {
             let data = {
                 name,
                 email,
                 password,
-                confirmPassword,
                 status: true,
             };
             if (data) {
-                axios({
-                    url: users_API,
-                    method: "post",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    data: data,
-                })
+                axios
+                    .post(users_API, {
+                        name,
+                        email,
+                        password,
+                        status: true,
+                    })
                     .then((response) => response)
                     .then((data) => {
                         navigate("/login");
                     })
-                    .catch(function (error) {
-                        if (error.response) {
-                            setError(
-                                error.response.data +
-                                    "you have an account please click down button"
-                            );
-                        } else if (error.request) {
-                            setError(error.request);
-                        } else {
-                            setError(error.message);
-                        }
+                    .catch((error) => {
+                        setError(error.response.data);
                     });
             }
         }
-    }
+    })
     function emailHandler(e) {
         setEmail(e.target.value);
     }

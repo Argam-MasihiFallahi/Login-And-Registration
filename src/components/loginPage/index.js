@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
 import axios from "axios";
@@ -10,6 +10,12 @@ function LoginPage() {
     const LOGIN_API = "http://localhost:3000/login";
     const [error, setError] = useState("");
 
+    // useEffect(() => {
+    //     if(localStorage.getItem("token")) {
+    //         navigate("/")
+    //     }
+    // },[])
+
     function emailHandler(e) {
         setEmail(e.target.value);
     }
@@ -18,25 +24,14 @@ function LoginPage() {
         setPassword(e.target.value);
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = useCallback((e) => {
         e.preventDefault();
-        let data = {
-            email,
-            password,
-        };
-
-        axios(LOGIN_API, {
-            method: "POST",
-            data: data,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => {
-                if (response.statusText) {
-                    return response.data;
-                }
+        axios
+            .post(LOGIN_API, {
+                email,
+                password,
             })
+            .then((response) => response.data)
             .then((data) => {
                 // Handle the response data
                 if (data.accessToken) {
@@ -53,7 +48,7 @@ function LoginPage() {
                     setError(error.message);
                 }
             });
-    }
+    })
 
     function registrationHandler() {
         navigate("/registration");

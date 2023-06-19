@@ -5,10 +5,11 @@ import UsersPage from "./components/usersPage";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
+     
     return (
         <div className="App">
             <Routes>
-                <Route path="/" element={<UsersPage />} />
+                <Route index element={<UsersPage />} />
                 <Route path="registration" element={<RegistrationPage />} />
                 <Route path="login" element={<LoginPage />} />
             </Routes>

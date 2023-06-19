@@ -1,7 +1,8 @@
+import DeleteUser from "../deleteUser";
 import StatusToggler from "../statusToggle";
 import "./style.module.css";
 function User(props) {
-    const {id,email,name,status} = props
+    const {id,email,name,status,deleteUser} = props
     return (
         <tr>
             <td>{id}</td>
@@ -10,6 +11,10 @@ function User(props) {
             <td>
                 <StatusToggler status={status} id={id} />
             </td>
+            <td>
+                <DeleteUser id={id} deleteUser={deleteUser}/>
+            </td>
+            
         </tr>
     );
 }
