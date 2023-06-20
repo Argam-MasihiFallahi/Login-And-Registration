@@ -1,25 +1,30 @@
 import { useEffect, useState } from "react";
 import User from "../user";
 import "./style.module.css";
-import axios from "axios";
+import axios from "../axios/index";
 import useAuth from "../../hooks/useAuth";
+import axiosInstance from "../axios/index";
+import { useNavigate } from "react-router-dom";
 
 function UsersPage() {
-    const users_API = "http://localhost:3000/users";
+    const users_API = "/660/users";
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
     const { isLogin, setIsLogin } = useAuth();
-
     useEffect(() => {
-        axios
-            .get(users_API, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
+        axiosInstance
+            .get(users_API)
+            .then((res) => {
+                return res.data;
             })
-            .then((res) => res.data)
             .then((res) => setData(res))
-            .catch((err) => setError(err));
+            .catch((err) => {
+                console.log(err);
+                if (err.request.statusText === "Unauthorized") {
+                    localStorage.clear();
+                    setIsLogin(false);
+                }
+            });
     }, []);
 
     function signoutHandler() {

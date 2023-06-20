@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 
 function PrivateRouting({children}){
     const { isLogin } = useAuth();
+    
     if(isLogin){
         return children;
     }

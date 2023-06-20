@@ -46,7 +46,7 @@ function RegistrationPage() {
                     });
             }
         }
-    })
+    });
     function emailHandler(e) {
         setEmail(e.target.value);
     }
@@ -120,8 +120,7 @@ function RegistrationPage() {
             </form>{" "}
             <h2 className={css.error}>{error}</h2>
             <button onClick={handleLogin}>
-                {" "}
-                If you have an account press here{" "}
+                If you have an account press here
             </button>
         </div>
     );
