@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import css from "./style.module.css";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -9,13 +10,9 @@ function LoginPage() {
     const navigate = useNavigate();
     const LOGIN_API = "http://localhost:3000/login";
     const [error, setError] = useState("");
-
-    // useEffect(() => {
-    //     if(localStorage.getItem("token")) {
-    //         navigate("/")
-    //     }
-    // },[])
-
+    const { isLogin, setIsLogin } = useAuth();
+    
+   
     function emailHandler(e) {
         setEmail(e.target.value);
     }
@@ -36,6 +33,7 @@ function LoginPage() {
                 // Handle the response data
                 if (data.accessToken) {
                     localStorage.setItem("token", data.accessToken);
+                    setIsLogin(true);
                     navigate("/");
                 }
             })
@@ -48,7 +46,7 @@ function LoginPage() {
                     setError(error.message);
                 }
             });
-    })
+    });
 
     function registrationHandler() {
         navigate("/registration");

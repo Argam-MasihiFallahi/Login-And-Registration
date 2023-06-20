@@ -1,47 +1,37 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import User from "../user";
 import "./style.module.css";
 import axios from "axios";
-import AuthContext from "../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 
 function UsersPage() {
     const users_API = "http://localhost:3000/users";
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    const navigate = useNavigate();
-    const {isLogin} = useAuth()
+    const { isLogin, setIsLogin } = useAuth();
 
-    if(!isLogin){}
     useEffect(() => {
-            axios
-                .get(users_API, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                            "token"
-                        )}`,
-                    },
-                })
-                .then((res) => res.data)
-                .then((res) => setData(res))
-                .catch((err) => setError(err));
-        
+        axios
+            .get(users_API, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            .then((res) => res.data)
+            .then((res) => setData(res))
+            .catch((err) => setError(err));
     }, []);
 
     function signoutHandler() {
         localStorage.clear();
-        navigate("/login");
+        setIsLogin(false);
     }
 
     async function deleteUser(id) {
         await axios
             .delete(`http://localhost:3000/users/${id}`)
             .catch((error) => console.log(error));
-        await axios
-            .get(users_API)
-            // .then((res) => res.data)
-            .then((res) => setData(res.data));
+        await axios.get(users_API).then((res) => setData(res.data));
     }
 
     return data ? (

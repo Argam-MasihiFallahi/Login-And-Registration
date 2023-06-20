@@ -8,11 +8,18 @@
   ],
   "users": [
     {
-      "email": "cannondell_f3@icloud.com",
-      "password": "$2a$10$awj9gkMoMxqGyT.PqEYsyOrgCx3GWn8j7U//qtHp6nHuQlb9gr//G",
-      "name": "Argam",
+      "email": "paronharut@mail.ru",
+      "password": "$2a$10$LA7dA1Fbb/Y8a5fOu0rLZu3YP5CecQ3Y5VO/jG7..SYVN29oLOSs6",
+      "name": "ago",
       "status": true,
-      "id": 1
+      "id": 2
+    },
+    {
+      "email": "cannondell_f3@yahoo.com",
+      "password": "$2a$10$vLy2pE1TD2wMQFzCd8WCTujxOgdOw9OZbRYRt6exIg6zQjVCoe1Iq",
+      "name": "Exo",
+      "status": true,
+      "id": 3
     }
   ],
   "comments": [
