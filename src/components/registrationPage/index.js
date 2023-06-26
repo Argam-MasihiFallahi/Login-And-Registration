@@ -1,52 +1,55 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
-import axios from "axios";
+import axiosInstance from "../axios";
 
 function RegistrationPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const users_API = "http://localhost:3000/register";
+    const users_API = "/register";
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        // password && password === confirmPass && email && name
-        if (password !== confirmPassword) {
-            setError("somthing went wrong check your passwords");
-        }
-        if (!password || !name || !confirmPassword || !email) {
-            setError("please fill all inputs");
-        }
-
-        if (password && password === confirmPassword && email && name) {
-            let data = {
-                name,
-                email,
-                password,
-                status: true,
-            };
-            if (data) {
-                axios
-                    .post(users_API, {
-                        name,
-                        email,
-                        password,
-                        status: true,
-                    })
-                    .then((response) => response)
-                    .then((data) => {
-                        navigate("/login");
-                    })
-                    .catch((error) => {
-                        setError(error.response.data);
-                    });
+    const handleSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
+            // password && password === confirmPass && email && name
+            if (password !== confirmPassword) {
+                setError("somthing went wrong check your passwords");
             }
-        }
-    });
+            if (!password || !name || !confirmPassword || !email) {
+                setError("please fill all inputs");
+            }
+
+            if (password && password === confirmPassword && email && name) {
+                let data = {
+                    name,
+                    email,
+                    password,
+                    status: true,
+                };
+                if (data) {
+                    axiosInstance
+                        .post(users_API, {
+                            name,
+                            email,
+                            password,
+                            status: true,
+                        })
+                        .then((response) => response)
+                        .then((data) => {
+                            navigate("/login");
+                        })
+                        .catch((error) => {
+                            setError(error.response.data);
+                        });
+                }
+            }
+        },
+        [name, email, password, confirmPassword, navigate]
+    );
     function emailHandler(e) {
         setEmail(e.target.value);
     }

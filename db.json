@@ -8,32 +8,25 @@
   ],
   "users": [
     {
-      "email": "paronharut@mail.ru",
-      "password": "$2a$10$LA7dA1Fbb/Y8a5fOu0rLZu3YP5CecQ3Y5VO/jG7..SYVN29oLOSs6",
-      "name": "ago",
-      "status": true,
-      "id": 2
-    },
-    {
-      "email": "cannondell_f3@yahoo.com",
-      "password": "$2a$10$vLy2pE1TD2wMQFzCd8WCTujxOgdOw9OZbRYRt6exIg6zQjVCoe1Iq",
-      "name": "Exo",
-      "status": true,
-      "id": 3
-    },
-    {
-      "email": "cannondell_f3@icloud.com",
-      "password": "$2a$10$W04fouOWmO2GCp8OYJ43lOkkSFPqiJm4j.dYPObg/nwjbg0nKCF0.",
-      "name": "ago",
-      "status": true,
-      "id": 4
-    },
-    {
       "email": "exo@mail.ru",
       "password": "$2a$10$f2ZDBEMOcKW5N6cFuouc/ubq6ZeeRqKAu0HU.gjJl74Ov/lxn.Ycy",
       "name": "Harut",
       "status": true,
       "id": 5
+    },
+    {
+      "email": "cannondellf3@gmail.com",
+      "password": "$2a$10$bdR2ebvFIWDLniXqU8XRGuAEUhaeOiZE66qM6WS.xOz3XpPyA6b6W",
+      "name": "ago",
+      "status": true,
+      "id": 6
+    },
+    {
+      "email": "cannondell_f3@icloud.com",
+      "password": "$2a$10$PBbUB36k9XuJbsM5ZHxpau.i7/ACYOecgCGXUndrOSWpXpypqVBbK",
+      "name": "ago",
+      "status": true,
+      "id": 7
     }
   ],
   "comments": [

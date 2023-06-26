@@ -1,16 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
-import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import axiosInstance from "../axios";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const LOGIN_API = "http://localhost:3000/login";
+    const LOGIN_API = "/login";
     const [error, setError] = useState("");
-    const { isLogin, setIsLogin } = useAuth();
+    const {  setIsLogin } = useAuth();
     
    
     function emailHandler(e) {
@@ -23,7 +23,7 @@ function LoginPage() {
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
-        axios
+        axiosInstance
             .post(LOGIN_API, {
                 email,
                 password,
@@ -46,8 +46,7 @@ function LoginPage() {
                     setError(error.message);
                 }
             });
-    });
-
+    },[email,navigate,password,setIsLogin]);
     function registrationHandler() {
         navigate("/registration");
     }

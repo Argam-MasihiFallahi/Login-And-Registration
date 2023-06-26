@@ -6,11 +6,11 @@ export function AuthProvider({ children }) {
         localStorage.getItem("token") ? true : false
     );
 
-    useEffect(() => {
-        if (!localStorage.getItem("token")) {
-            setIsLogin(false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!localStorage.getItem("token")) {
+    //         setIsLogin(false);
+    //     }
+    // }, []);
 
     return (
         <AuthContext.Provider value={{ isLogin, setIsLogin }}>

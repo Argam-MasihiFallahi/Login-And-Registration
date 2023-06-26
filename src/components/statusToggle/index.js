@@ -1,14 +1,15 @@
 import { useState } from "react";
 import css from "./style.module.css";
-import axios from "axios";
+import axiosInstance from "../axios";
 
 
 function StatusToggler({ status, id }) {
     const [flag,setFlag] = useState(status)
     const [error , setError] = useState('');
+    let statusToggle_api = `/users/${id}`
     function togglerHandle() {
         setFlag(!flag);
-        axios.patch(`http://localhost:3000/users/${id}`,{
+        axiosInstance.patch(statusToggle_api,{
             status : !flag
         })
         .catch(error => setError(error));
