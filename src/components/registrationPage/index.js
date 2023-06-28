@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
-import axiosInstance from "../axios";
+import axiosInstance from "../../API";
 
 function RegistrationPage() {
     const [name, setName] = useState("");
@@ -22,30 +22,20 @@ function RegistrationPage() {
             if (!password || !name || !confirmPassword || !email) {
                 setError("please fill all inputs");
             }
-
             if (password && password === confirmPassword && email && name) {
-                let data = {
-                    name,
-                    email,
-                    password,
-                    status: true,
-                };
-                if (data) {
-                    axiosInstance
-                        .post(users_API, {
-                            name,
-                            email,
-                            password,
-                            status: true,
-                        })
-                        .then((response) => response)
-                        .then((data) => {
-                            navigate("/login");
-                        })
-                        .catch((error) => {
-                            setError(error.response.data);
-                        });
-                }
+                axiosInstance
+                    .post(users_API, {
+                        name,
+                        email,
+                        password,
+                        status: true,
+                    })
+                    .then(() => {
+                        navigate("/login");
+                    })
+                    .catch((error) => {
+                        setError(error.response.data);
+                    });
             }
         },
         [name, email, password, confirmPassword, navigate]

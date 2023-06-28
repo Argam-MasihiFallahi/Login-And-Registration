@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./style.module.css";
 import useAuth from "../../hooks/useAuth";
-import axiosInstance from "../axios";
+import axiosInstance from "../../API";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -10,9 +10,8 @@ function LoginPage() {
     const navigate = useNavigate();
     const LOGIN_API = "/login";
     const [error, setError] = useState("");
-    const {  setIsLogin } = useAuth();
-    
-   
+    const { setIsLogin } = useAuth();
+
     function emailHandler(e) {
         setEmail(e.target.value);
     }
@@ -21,32 +20,26 @@ function LoginPage() {
         setPassword(e.target.value);
     }
 
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        axiosInstance
-            .post(LOGIN_API, {
-                email,
-                password,
-            })
-            .then((response) => response.data)
-            .then((data) => {
-                // Handle the response data
-                if (data.accessToken) {
-                    localStorage.setItem("token", data.accessToken);
-                    setIsLogin(true);
-                    navigate("/");
-                }
-            })
-            .catch(function (error) {
-                if (error.response) {
+    const handleSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
+            axiosInstance
+                .post(LOGIN_API, {
+                    email,
+                    password,
+                })
+                .then((response) => {
+                    if (response.data.accessToken) {
+                        localStorage.setItem("token", response.data.accessToken);
+                        setIsLogin(true);
+                    }
+                })
+                .catch((error) => {
                     setError(error.response.data);
-                } else if (error.request) {
-                    setError(error.request);
-                } else {
-                    setError(error.message);
-                }
-            });
-    },[email,navigate,password,setIsLogin]);
+                });
+        },
+        [email, password, setIsLogin]
+    );
     function registrationHandler() {
         navigate("/registration");
     }

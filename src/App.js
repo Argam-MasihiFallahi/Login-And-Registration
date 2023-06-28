@@ -1,5 +1,5 @@
 import "./App.css";
-import Publicrouting from "./components/PpublicRouting";
+import Publicrouting from "./components/publicRouting";
 import LoginPage from "./components/loginPage";
 import PrivateRouting from "./components/privateRouting";
 import RegistrationPage from "./components/registrationPage";
